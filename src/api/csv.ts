@@ -13,16 +13,16 @@ const { TOKEN, URL } = process.env
 
 program
   .option('-f, --file <file...>', 'file location of csv')
-  .option('-d, --divideByCount <divide...>', 'count rows to divide')
+  .option('-b, --batch <divide...>', 'count rows to divide')
   .action((args) => {
-    const { file, divideByCount } = args
+    const { file, batch } = args
 
     if (!file) {
       console.log('must provide file location')
       process.exit(1)
     }
 
-    if (!divideByCount?.[0]) {
+    if (!batch?.[0]) {
       console.log('must provide a valid number to divide rows into')
       process.exit(1)
     }
@@ -32,10 +32,10 @@ program
 const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
 
 export const runCsv = () => {
-  const { file, divideByCount } = program.opts()
+  const { file, batch } = program.opts()
 
   const path = file[0]
-  const count = divideByCount?.[0]
+  const count = batch?.[0]
 
   const results: any[] = []
 
@@ -51,6 +51,8 @@ export const runCsv = () => {
       const allRows = rows.flat()
 
       console.log('rows count: ', allRows.length)
+      
+      console.log('starting backfill')
 
       if (count) {
         let currentResult: string[] = []
@@ -69,7 +71,7 @@ export const runCsv = () => {
                 },
               })
               
-              console.log('response', response)
+              console.log('response status', response.status)
             } catch (error) {
               console.error('error', error)
               console.error('errored out at current result', currentResult)
@@ -84,6 +86,8 @@ export const runCsv = () => {
         }
       }
 
+      
+      console.log('completed backfill')
     })
 
 }

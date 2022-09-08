@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node ./src/api/csv.ts"
+    "backfill": "ts-node ./src/api/csv.ts"
   },
   "keywords": [],
   "author": "",
