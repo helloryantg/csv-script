@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "backfill": "ts-node ./src/api/csv.ts"
+    "backfill": "ts-node ./src/api/csv.ts",
+    "compare": "ts-node ./src/api/compare.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
     "axios": "^0.27.2",
     "commander": "^9.4.0",
     "csv-parse": "^5.3.0",
-    "dotenv": "^16.0.2"
+    "dotenv": "^16.0.2",
+    "xlsx": "^0.18.5"
   }
 }

@@ -29,7 +29,7 @@ program
   })
   .parse()
 
-const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
+// const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
 
 export const runCsv = () => {
   const { file, batch } = program.opts()
@@ -80,7 +80,7 @@ export const runCsv = () => {
              
             console.log('finished sending')
             
-            await delay(INTERVAL_MS);
+            // await delay(INTERVAL_MS);
             currentResult = []
           }
         }
