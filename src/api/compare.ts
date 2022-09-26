@@ -100,7 +100,7 @@ export const compare = () => {
       const outWB = XLSX.utils.book_new()
       const ws1 = XLSX.utils.json_to_sheet(outputResults)
       XLSX.utils.book_append_sheet(outWB, ws1, 'New Output')
-      XLSX.writeFile(outWB,`output/${filename}.xlsx`)
+      XLSX.writeFile(outWB,`output/compared-${filename}`)
     })
 }
 
